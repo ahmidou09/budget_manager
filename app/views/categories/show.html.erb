@@ -1,0 +1,35 @@
+<div>
+  <div>
+    <a href="<%= categories_path %>">
+      Back
+    </a>
+    <h1><%= @category.name %></h1>
+  </div>
+  <div>
+    <h2>TRANSACTIONS</h2>
+    <div>
+      <div>
+        <picture>
+          <img src="<%= @category.icon %>" alt="icon">
+        </picture>
+        <h3><%= @category.name %></h3>
+        <p><%= number_to_currency(@total_amount, precision: 2) %></p>
+      </div>
+    </div>
+    <ul>
+      <% if @transfers %>
+        <% @transfers.each do |transfer| %>
+          <li>
+            <a href="<%= category_transfer_path(@category, transfer) %>">
+              <h4><%= transfer.name %></h4>
+              <p><%= number_to_currency(transfer.amount, precision: 2) %></p>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <%= link_to 'Add a New Transaction', new_category_transfer_path(@category) %>
+  </div>
+</div>
