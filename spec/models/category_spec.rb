@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Category, type: :model do
   it 'is valid with valid attributes' do
     user = User.new(name: 'John Doe', email: 'demo@demo.com', password: '000000')
-    category = Category.new(user: user, name: 'Food', icon: 'icon.jpg')
+    category = Category.new(user:, name: 'Food', icon: 'icon.jpg')
     expect(category).to be_valid
   end
 

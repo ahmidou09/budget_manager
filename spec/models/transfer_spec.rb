@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Transfer, type: :model do
   it 'is valid with valid attributes' do
     user = User.create!(name: 'John Doe', email: 'demo@demo.com', password: '000000')
-    category = Category.create!(user: user, name: 'Food', icon: 'icon.jpg')
-    transfer = Transfer.new(user: user, name: 'Taco', amount: 7.5, category: category)
+    category = Category.create!(user:, name: 'Food', icon: 'icon.jpg')
+    transfer = Transfer.new(user:, name: 'Taco', amount: 7.5, category:)
     expect(transfer).to be_valid
   end
 
@@ -15,14 +15,14 @@ RSpec.describe Transfer, type: :model do
 
   it 'is valid with valid attributes and associated category' do
     user = User.create!(name: 'John Doe', email: 'demo@demo.com', password: '000000')
-    category = Category.create!(user: user, name: 'Food', icon: 'icon.jpg')
-    transfer = Transfer.new(user: user, name: 'Taco', amount: 7.5, category: category)
+    category = Category.create!(user:, name: 'Food', icon: 'icon.jpg')
+    transfer = Transfer.new(user:, name: 'Taco', amount: 7.5, category:)
     expect(transfer).to be_valid
   end
 
   it 'is not valid without a category' do
     user = User.create!(name: 'John Doe', email: 'demo@demo.com', password: '000000')
-    transfer = Transfer.new(user: user, name: 'Taco', amount: 7.5)
+    transfer = Transfer.new(user:, name: 'Taco', amount: 7.5)
     expect(transfer).to_not be_valid
   end
 
