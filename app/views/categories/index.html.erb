@@ -15,7 +15,10 @@
             <picture>
               <img src="<%= category.icon %>" alt="icon">
             </picture>
-            <h2><%= category.name %></h2>
+            <div>
+              <h2><%= category.name %></h2>
+              <p><%= category.created_at.strftime("%d %b %Y") %></p>
+            </div>
             <p><%= number_to_currency(category.transfers.sum(&:amount), precision: 2) %></p>
           <% end %>
         </li>
