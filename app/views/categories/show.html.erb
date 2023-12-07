@@ -13,7 +13,10 @@
         <picture>
           <img src="<%= @category.icon %>" alt="icon">
         </picture>
-        <h3><%= @category.name %></h3>
+        <div>
+          <h3><%= @category.name %></h3>
+          <p>📅<%= @category.created_at.strftime("%d %b %Y at %I:%M %p") %></p>
+        </div>
         <p><%= number_to_currency(@total_amount, precision: 2) %></p>
       </div>
     </div>
@@ -22,8 +25,11 @@
       <% if @transfers.present? %>
         <% @transfers.each do |transfer| %>
           <li>
+            <div>
               <h4><%= transfer.name %></h4>
-              <p><%= number_to_currency(transfer.amount, precision: 2) %></p>
+              <p><%= transfer.created_at.strftime("%d %b %Y") %></p>
+            </div>
+            <p><%= number_to_currency(transfer.amount, precision: 2) %></p>
           </li>
         <% end %>
       <% else %>
