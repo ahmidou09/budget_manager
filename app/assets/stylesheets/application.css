@@ -184,19 +184,30 @@ p {
 
 .category-info-header img,
 .category-item a img {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 7rem;
+  height: 7rem;
 }
 
 .transactions-section h2 {
   text-align: center;
 }
 
-.category-item a h2,
-.category-info-header h3 {
+.category-info-header div,
+.category-item a div {
   margin-right: auto;
+}
+
+.category-info-header div h3,
+.category-item a div h2 {
   font-size: 1.6rem;
-  color: #000;
+  color: #979696;
+  margin-bottom: 2rem;
+}
+
+.category-info-header div p,
+.category-item a div p {
+  font-size: 1.3rem;
+  color: #b1b1b1;
 }
 
 /* Add category and transaction styles */
@@ -234,6 +245,12 @@ p {
   padding: 1rem 2rem;
   background-color: #fff;
   font-size: 1.6rem;
+}
+
+.transaction-list li div p {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: #b1b1b1;
 }
 
 .box-button button:last-child a {
