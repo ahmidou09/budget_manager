@@ -1,0 +1,44 @@
+<div class="category-details-container">
+  <div class="header">
+    <%= link_to '←', categories_path, class: 'back-link' %>
+    <h1 class="category-name"><%= @category.name %></h1>
+  </div>
+
+  <div class="transactions-section">
+  
+    <h2>TRANSACTIONS</h2>
+
+    <div class="category-info">
+      <div class="category-info-header">
+        <picture>
+          <img src="<%= @category.icon %>" alt="icon">
+        </picture>
+        <div>
+          <h3><%= @category.name %></h3>
+          <p>📅<%= @category.created_at.strftime("%d %b %Y at %I:%M %p") %></p>
+        </div>
+        <p><%= number_to_currency(@total_amount, precision: 2) %></p>
+      </div>
+    </div>
+
+    <ul class="transaction-list">
+      <% if @transfers.present? %>
+        <% @transfers.each do |transfer| %>
+          <li>
+            <div>
+              <h4><%= transfer.name %></h4>
+              <p><%= transfer.created_at.strftime("%d %b %Y") %></p>
+            </div>
+            <p><%= number_to_currency(transfer.amount, precision: 2) %></p>
+          </li>
+        <% end %>
+      <% else %>
+        <li>No transactions available.</li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="add-transaction">
+    <%= link_to 'Add a New Transaction', new_category_transfer_path(@category) %>
+  </div>
+</div>

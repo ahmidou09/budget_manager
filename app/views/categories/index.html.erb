@@ -1,0 +1,32 @@
+<div class="category-container">
+  <div class="header">
+    <%= link_to 'Budget Manager', root_path %>
+    <%= button_to 'Log Out', destroy_user_session_path, method: :delete %>
+  </div>
+
+  <div class="category-list-container">
+    <div>
+      <h1>Categories</h1>
+    </div>
+    <ul class="category-list">
+      <% @categories.each do |category| %>
+        <li class="category-item">
+          <%= link_to category_path(category.id) do %>
+            <picture>
+              <img src="<%= category.icon %>" alt="icon">
+            </picture>
+            <div>
+              <h2><%= category.name %></h2>
+              <p><%= category.created_at.strftime("%d %b %Y") %></p>
+            </div>
+            <p><%= number_to_currency(category.transfers.sum(&:amount), precision: 2) %></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="add-category">
+    <%= link_to 'Add a New Category', new_category_path %>
+  </div>
+</div>
